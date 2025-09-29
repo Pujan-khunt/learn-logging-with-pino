@@ -7,3 +7,5 @@
 - Never log sensitive information like someone's personal identity information.
 
 - You can use a pretty printer in development. eg. pino-pretty in npm registry.
+
+- Log level can be changed at runtime

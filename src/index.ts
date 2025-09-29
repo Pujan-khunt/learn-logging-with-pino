@@ -42,6 +42,13 @@ app.post("/users", async (req: Request, res: Response) => {
 	return;
 });
 
+app.post("/log-level", (req: Request, res: Response) => {
+	const logLevel = req.body;
+	if (["debug", "info", "warn", "error", "fatal"].includes(logLevel)) {
+		req.log.level = logLevel;
+	}
+});
+
 // A route to simulate a critical failure
 app.get("/crash", (req, _res) => {
 	// FATAL: Log the reason for the crash and then exit.
