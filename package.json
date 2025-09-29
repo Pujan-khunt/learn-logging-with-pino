@@ -1,0 +1,25 @@
+{
+	"name": "production-logging-using-pino",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"build": "tsc",
+		"start": "node ./dist/index.js"
+	},
+	"keywords": [],
+	"type": "module",
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.17.0",
+	"dependencies": {
+		"dotenv": "^17.2.2",
+		"express": "^5.1.0",
+		"pino": "^9.12.0",
+		"uuid": "^13.0.0"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.3",
+		"@types/node": "^24.5.2",
+		"typescript": "^5.9.2"
+	}
+}
