@@ -3,31 +3,37 @@ import config from "../config/envConfig.js";
 import type { User } from "../types/index.js";
 
 function userSerializer(user: User): User {
-	return {
-		id: user.id,
-		// Redacting sensitive information
-		name: "***",
-		email: user.email.replace(/(.{2})(.*)(@.*)/, "$1***$3"),
-	};
+  return {
+    id: user.id,
+    // Redacting sensitive information
+    name: "***",
+    email: user.email.replace(/(.{2})(.*)(@.*)/, "$1***$3"),
+  };
 }
 
 const logger = pino({
-	level: config.LOG_LEVEL,
-	serializers: {
-		user: userSerializer,
-	},
+  level: config.LOG_LEVEL,
+  serializers: {
+    user: userSerializer,
+  },
+  transport: {
+    target: "pino-pretty",
+    options: {
+      colorize: true,
+    },
+  },
 });
 
 const users: User[] = [
-	{
-		id: 1,
-		name: "Pujan Khunt",
-		email: "pujankhunt2412@gmail.com",
-	},
+  {
+    id: 1,
+    name: "Pujan Khunt",
+    email: "pujankhunt2412@gmail.com",
+  },
 ];
 
 for (const user of users) {
-	logger.info({ user });
+  logger.info({ user });
 }
 
 export default logger;
